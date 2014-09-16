@@ -1,7 +1,11 @@
-(ns riel_backend.models.store
+(ns riel-backend.models.store
   (:require [monger.core :as mg]
             [monger.collection :as mc])
   (:import [org.bson.types ObjectId]
            [com.mongodb DB WriteConcern]))
 
-(let [conn (mg/connect) db (mg/get-db conn "riel")])
+(def conn (mg/connect { :host "localhost" }))
+(def db (mg/get-db conn "riel"))
+(defn smoketest [] (mc/find-maps db "test"))
+
+

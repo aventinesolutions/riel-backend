@@ -5,10 +5,13 @@
             [hiccup.middleware :refer [wrap-base-url]]
             [compojure.handler :as handler]
             [compojure.route :as route]
-            [riel-backend.routes.home :refer [home-routes]]))
+            [riel-backend.routes.home :refer [home-routes]]
+            [riel-backend.models.store :as store]))
+
 
 (defn init []
-  (println "riel-backend is starting"))
+  (println "riel-backend is starting")
+  (println (store/smoketest)))
 
 (defn destroy []
   (println "riel-backend is shutting down"))
@@ -21,5 +24,3 @@
   (-> (routes home-routes app-routes)
       (handler/site)
       (wrap-base-url)))
-
-
