@@ -9,7 +9,7 @@
 
 (defn smoketest []
   (println (mc/find-maps db "test")) 
-  (if (empty (mc/find-maps db "global-exercises"))
+  (if (empty (mc/find-maps db "global"))
     ((println "global exercises document not found")
      (use 'riel-backend.models.global-exercises :reload :verbose)
      (mc/insert db "global-exercises" 'global-exercises)
