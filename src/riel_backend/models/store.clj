@@ -7,10 +7,13 @@
 (def conn (mg/connect { :host "localhost" }))
 (def db (mg/get-db conn "riel"))
 
+(defn get-global-exercises [db]
+  (last (map (fn [doc] (if (get doc :exercises)
+                     (get doc :exercises))) (mc/find-maps db "global"))))
+
 (defn smoketest []
-  (println (mc/find-maps db "test")) 
-  (if (empty (mc/find-maps db "global"))
+  (if (not (get-global-exercises db))
     ((println "global exercises document not found")
-     (use 'riel-backend.models.global-exercises :reload :verbose)
-     (mc/insert db "global-exercises" 'global-exercises)
+     '(use riel-backend.models.data.global-exercises :verbose)
+     '(riel-backend.models.data/insert-global-exercises db)
      (println "initialized global exercises document"))))
