@@ -48,3 +48,7 @@ quit
 (load-facts 'riel-backend.models.store)
 (load-facts 'riel-backend.models.store-test)
 quit
+(require '[midje.repl :as midje])
+quit
+(require '[midje.repl :as midje])
+(midje/autotest)
