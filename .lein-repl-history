@@ -52,3 +52,20 @@ quit
 quit
 (require '[midje.repl :as midje])
 (midje/autotest)
+(use 'midje-repl)
+(require 'midje-repl)
+(require 'midje_repl)
+(use 'midje-repl)
+(use 'midje/midje-repl)
+(use 'midje/repl)
+(use 'midje)
+quit
+(use 'midje-repl)
+(autotest)
+quit
+(use 'midje.repl)
+(doc midje-repl_
+)
+(doc 'midje-repl)
+(doc midje-repl)
+(autotest)

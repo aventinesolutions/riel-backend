@@ -1,14 +1,15 @@
 (ns riel-backend.test.handler
   (:use clojure.test
+        midje.sweet
         ring.mock.request
         riel-backend.handler))
 
-(deftest test-app
-  (testing "main route"
-    (let [response (app (request :get "/"))]
-      (is (= (:status response) 200))
-      (is (= (:body response) "Hello World"))))
+(fact "working home page"
+      (let [response (app (request :get "/"))]
+        (fact "valid response" (:status response) => 200)
+        (fact "valid body" (:body response) => (contains "riel-backend"))))
 
-  (testing "not-found route"
-    (let [response (app (request :get "/invalid"))]
-      (is (= (:status response) 404)))))
+(fact "invalid route"
+      (let [response (app (request :get "/invalid"))]
+        (fact "valid response" (:status response) => 404)))
+      
