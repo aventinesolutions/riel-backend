@@ -69,3 +69,17 @@ quit
 (doc 'midje-repl)
 (doc midje-repl)
 (autotest)
+(use 'riel-backend.models.store)
+(conn)
+(get-global-exercices)
+(riel-backend.models.store.get-global-exercices)
+(ns riel-backend.models.store-test
+  (:require [monger.core :as mg]
+            [monger.collection :as mc])
+  (:use midje.sweet)
+  (:use [riel-backend.models.store]))
+(get-global-exercises db)
+(first (get-global-exercises db))
+(last (get-global-exercises db))
+(conn)
+quit
