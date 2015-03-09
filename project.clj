@@ -8,7 +8,7 @@
                  [liberator "0.12.2"]
                  [com.novemberain/monger "2.1.0"]]
   :plugins [[lein-ring "0.9.2"]]
-  :ring {:handler riel-backend.handler/app
+  :ring {:handler riel-backend.api/app
          :init riel-backend.handler/init
          :destroy riel-backend.handler/destroy}
   :aot :all
